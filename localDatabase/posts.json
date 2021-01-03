@@ -1,0 +1,7 @@
+{
+  "1": {
+    "id": "1",
+    "metadata": { "createdAt": 123456, "author": "Alan" },
+    "content": "lorem ipsum"
+  }
+}
