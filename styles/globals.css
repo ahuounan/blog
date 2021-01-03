@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'NanumGothic-Regular';
+  src: url('/fonts/NanumGothic-Regular.eot');
+  src: url('/fonts/NanumGothic-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/NanumGothic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumGothic';
+  src: url('/fonts/NanumGothic.svg#NanumGothic') format('svg'),
+    url('/fonts/NanumGothic.ttf') format('truetype'), url('/fonts/NanumGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html,
+body,
+:root,
+#__next {
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100%;
+  width: 100%;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
