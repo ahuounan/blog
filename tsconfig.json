@@ -14,7 +14,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@libs/*": ["src/libs/*"],
+      "@pages/*": ["src/pages/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

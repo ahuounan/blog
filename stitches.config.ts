@@ -1,6 +1,6 @@
 import { TComponentStylesObject, createStyled } from '@stitches/react';
 
-import { ElementType } from 'libs/types';
+import { ElementType } from 'src/libs/types';
 
 // const goldRatioScale = ['0.618rem', '1rem', '1.618rem', '2.618rem', '4.236rem'] as const;
 // const majorThirdScale = ['0.8rem', '1rem', '1.25rem', '1.563rem', '1.953rem'] as const;
