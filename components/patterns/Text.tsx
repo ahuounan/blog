@@ -1,6 +1,6 @@
 import { styled } from 'stitches.config';
 
-const Text = styled('p', {
+export const Text = styled('p', {
   fontSize: '$1',
   fontWeight: 400,
   fontFamily: 'NanumGothic',
@@ -24,5 +24,3 @@ const Text = styled('p', {
     }
   }
 });
-
-export default Text;

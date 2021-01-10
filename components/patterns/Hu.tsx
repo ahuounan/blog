@@ -30,7 +30,7 @@ export function Hu(props: Props): JSX.Element {
 const styles: Record<string, CSSProp> = {
   container: {
     flexShrink: 0,
-    background: '#f70502',
+    backgroundColor: '$logoBackground',
     borderRadius: '10%'
   }
 };

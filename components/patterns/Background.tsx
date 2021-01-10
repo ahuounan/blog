@@ -9,6 +9,6 @@ const styles: Record<string, CSSProp> = {
   background: {
     width: '100%',
     height: '100%',
-    background: '#af2725'
+    backgroundColor: '$background'
   }
 };

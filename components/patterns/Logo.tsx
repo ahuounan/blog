@@ -2,7 +2,7 @@ import { Div } from 'components/primitives/Div';
 import { CSSProp } from 'stitches.config';
 
 import { Hu } from './Hu';
-import Text from './Text';
+import { Text } from './Text';
 
 export function Logo(): JSX.Element {
   return (
@@ -26,7 +26,6 @@ const styles: Record<string, CSSProp> = {
   },
   name: {
     marginLeft: '$0',
-    textAlign: 'left',
-    whitespace: 'nowrap'
+    textAlign: 'left'
   }
 };
