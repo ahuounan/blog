@@ -1,10 +1,10 @@
 import { Button } from '@components/primitives/Button';
 import { Div } from '@components/primitives/Div';
-import { CSSProp } from 'stitches.config';
+import { ChildProp } from '@libs/types';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
-  title?: string;
-  children?: JSX.Element | string;
+  children?: ChildProp;
   onClick?: () => void;
 }
 export function IconPostLayout(props: Props): JSX.Element {

@@ -1,13 +1,12 @@
-import { Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 
-import { Text } from '@components/primitives/Text';
+import { Button } from '@components/primitives/Button';
+import { Div } from '@components/primitives/Div';
 import { Separator } from '@components/primitives/Separator';
-import { CSSProp, styled } from 'stitches.config';
-
-import { Button } from '../primitives/Button';
-import { Div } from '../primitives/Div';
+import { Text } from '@components/primitives/Text';
+import { CSSProp, styled } from '@stitches.config';
 
 import { Logo } from './Logo';
 

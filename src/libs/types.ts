@@ -4,3 +4,5 @@ export type ElementType<T extends ReadonlyArray<unknown>> = T extends ReadonlyAr
 >
   ? ElementType
   : never;
+
+export type ChildProp = JSX.Element | null | Array<JSX.Element | null>;

@@ -1,7 +1,7 @@
-import { PageLayout } from '@components/layouts/PageLayout';
 import { OuNanSealScript } from '@components/icons/OuNanSealScript';
+import { PageLayout } from '@components/layouts/PageLayout';
 import { Div } from '@components/primitives/Div';
-import { CSSProp } from 'stitches.config';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
   title: string;

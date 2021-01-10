@@ -1,5 +1,5 @@
 import { Div } from '@components/primitives/Div';
-import { CSSProp } from 'stitches.config';
+import { CSSProp } from '@stitches.config';
 
 export function Background(): JSX.Element {
   return <Div css={styles.background} />;

@@ -19,9 +19,10 @@
       "@components/*": ["src/components/*"],
       "@controllers/*": ["src/controllers/*"],
       "@libs/*": ["src/libs/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@stitches.config": ["src/stitches.config"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest/snapshot-resolver.js"],
   "exclude": ["node_modules"]
 }

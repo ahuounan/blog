@@ -1,19 +1,19 @@
 import { GetServerSideProps } from 'next';
 
+import { LinkedIn } from '@components/icons/LinkedIn';
+import { LocationPin } from '@components/icons/LocationPin';
+import { Mail } from '@components/icons/Mail';
+import { IconPostLayout } from '@components/layouts/IconPostLayout';
+import { PostLayout } from '@components/layouts/PostLayout';
+import { SectionLayout } from '@components/layouts/SectionLayout';
 import { TabPageLayout } from '@components/layouts/TabPageLayout';
 import { Background } from '@components/patterns/Background';
 import { Navbar } from '@components/patterns/Navbar';
-import { SectionLayout } from '@components/layouts/SectionLayout';
-import { PostLayout } from '@components/layouts/PostLayout';
-import { IconPostLayout } from '@components/layouts/IconPostLayout';
-import { LinkedIn } from '@components/icons/LinkedIn';
-import { Mail } from '@components/icons/Mail';
 import { Div } from '@components/primitives/Div';
-import { Text } from '@components/primitives/Text';
-import { LocationPin } from '@components/icons/LocationPin';
 import { Form } from '@components/primitives/Form';
 import { Input } from '@components/primitives/Input';
-import { CSSProp } from 'stitches.config';
+import { Text } from '@components/primitives/Text';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
   text: string;
@@ -32,33 +32,31 @@ export default function Contact(): JSX.Element {
       title="Contact"
       body={
         <SectionLayout title="Contact">
-          <>
-            <IconPostLayout>
-              <Div css={styles.contactContainer}>
-                <Div as="a" target="_blank" href={urls.linkedIn} css={styles.box}>
-                  <LinkedIn css={styles.icon} />
-                  <Text type="body">Alan Hu</Text>
-                </Div>
-                <Div as="a" target="_blank" href={urls.mailTo} css={styles.box}>
-                  <Mail css={styles.icon} />
-                  <Text type="body">on.alanhu@gmail.com</Text>
-                </Div>
-                <Div as="a" target="_blank" href={urls.gmaps} css={styles.box}>
-                  <LocationPin css={styles.icon} />
-                  <Text type="body">London, UK</Text>
-                </Div>
+          <IconPostLayout>
+            <Div css={styles.contactContainer}>
+              <Div as="a" target="_blank" href={urls.linkedIn} css={styles.box}>
+                <LinkedIn css={styles.icon} />
+                <Text type="body">Alan Hu</Text>
               </Div>
-            </IconPostLayout>
+              <Div as="a" target="_blank" href={urls.mailTo} css={styles.box}>
+                <Mail css={styles.icon} />
+                <Text type="body">on.alanhu@gmail.com</Text>
+              </Div>
+              <Div as="a" target="_blank" href={urls.gmaps} css={styles.box}>
+                <LocationPin css={styles.icon} />
+                <Text type="body">London, UK</Text>
+              </Div>
+            </Div>
+          </IconPostLayout>
 
-            <PostLayout title="Leave a Message">
-              <Form>
-                <Text as="label" type="body" htmlFor="fullName">
-                  Full Name
-                </Text>
-                <Input id="fullName" />
-              </Form>
-            </PostLayout>
-          </>
+          <PostLayout title="Leave a Message">
+            <Form>
+              <Text as="label" type="body" htmlFor="fullName">
+                Full Name
+              </Text>
+              <Input id="fullName" />
+            </Form>
+          </PostLayout>
         </SectionLayout>
       }
       navbar={<Navbar />}

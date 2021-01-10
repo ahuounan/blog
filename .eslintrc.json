@@ -4,6 +4,7 @@
     "es2021": true,
     "node": true
   },
+  "ignorePatterns": ["coverage/**/*", "localDatabase/**/*"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -24,9 +25,14 @@
       "error",
       {
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
-        "newlines-between": "always"
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ],
+    "import/no-unused-modules": 0,
     "@typescript-eslint/member-ordering": [
       "error",
       {
@@ -42,7 +48,7 @@
       }
     ],
     "react/react-in-jsx-scope": 0,
-    "@typescript-eslint/no-var-requires": 1
+    "@typescript-eslint/no-var-requires": 0
   },
   "settings": {
     "import/parsers": {
@@ -50,6 +56,9 @@
     },
     "import/resolver": {
       "typescript": {}
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }

@@ -1,9 +1,7 @@
+import { Hu } from '@components/icons/Hu';
 import { Div } from '@components/primitives/Div';
-import { CSSProp } from 'stitches.config';
-
-import { Text } from '../primitives/Text';
-
-import { Hu } from './Hu';
+import { Text } from '@components/primitives/Text';
+import { CSSProp } from '@stitches.config';
 
 export function Logo(): JSX.Element {
   return (

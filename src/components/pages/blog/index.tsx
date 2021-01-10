@@ -1,11 +1,11 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 
+import { PostLayout } from '@components/layouts/PostLayout';
+import { SectionLayout } from '@components/layouts/SectionLayout';
 import { TabPageLayout } from '@components/layouts/TabPageLayout';
 import { Background } from '@components/patterns/Background';
 import { Navbar } from '@components/patterns/Navbar';
-import { SectionLayout } from '@components/layouts/SectionLayout';
-import { PostLayout } from '@components/layouts/PostLayout';
 import { PostsController } from 'src/controllers/posts';
 import { PostData } from 'src/controllers/posts/types';
 

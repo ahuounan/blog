@@ -1,12 +1,12 @@
 import { readFileSync, promises as fs } from 'fs';
 
-import { Logger } from 'src/libs/Logger';
+import { Logger } from '@libs/Logger';
 
 import { Controller, Identifiable } from './types';
 
 type Validate<T extends Identifiable> = (data: T) => boolean;
 
-export abstract class LocalDatabaseController<T extends Identifiable> implements Controller<T> {
+export class LocalDatabaseController<T extends Identifiable> implements Controller<T> {
   protected path: string;
   protected validate: Validate<T>;
   protected cache: Record<string, T> = {};
@@ -31,8 +31,6 @@ export abstract class LocalDatabaseController<T extends Identifiable> implements
 
   async get(id: string): Promise<T | null> {
     if (!this.cache || !this.cache[id]) return null;
-
-    this.sync();
 
     return this.cache[id];
   }

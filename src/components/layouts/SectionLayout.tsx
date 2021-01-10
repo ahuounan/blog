@@ -1,11 +1,12 @@
-import { Text } from '@components/primitives/Text';
 import { Div } from '@components/primitives/Div';
 import { Separator } from '@components/primitives/Separator';
-import { CSSProp } from 'stitches.config';
+import { Text } from '@components/primitives/Text';
+import { ChildProp } from '@libs/types';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
   title: string;
-  children?: JSX.Element;
+  children?: ChildProp;
 }
 export function SectionLayout(props: Props): JSX.Element {
   const { children, title } = props;

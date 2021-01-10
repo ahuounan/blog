@@ -1,8 +1,8 @@
 import { Svg } from '@components/primitives/Svg';
-import { CSSProp } from 'stitches.config';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
-  css: CSSProp;
+  css?: CSSProp;
 }
 
 export function Mail(props: Props): JSX.Element {

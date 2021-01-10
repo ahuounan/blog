@@ -1,11 +1,12 @@
-import { Text } from '@components/primitives/Text';
 import { Button } from '@components/primitives/Button';
 import { Div } from '@components/primitives/Div';
-import { CSSProp } from 'stitches.config';
+import { Text } from '@components/primitives/Text';
+import { ChildProp } from '@libs/types';
+import { CSSProp } from '@stitches.config';
 
 interface Props {
   title?: string;
-  children?: JSX.Element | string;
+  children?: ChildProp | string;
   img?: string;
   onClick?: () => void;
 }

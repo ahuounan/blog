@@ -1,6 +1,5 @@
-import { CSSProp, CSSTokens, ScaleValues } from 'stitches.config';
-
-import { Svg } from '../primitives/Svg';
+import { Svg } from '@components/primitives/Svg';
+import { CSSProp, CSSTokens, ScaleValues } from '@stitches.config';
 
 interface Props {
   size?: ScaleValues | keyof CSSTokens['sizes'];

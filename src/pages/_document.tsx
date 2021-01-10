@@ -1,8 +1,8 @@
 import NextDocument, { DocumentContext, DocumentInitialProps } from 'next/document';
 import React from 'react';
 
+import { css } from '@stitches.config';
 import { Logger } from 'src/libs/Logger';
-import { css } from 'stitches.config';
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {

@@ -1,8 +1,10 @@
 import Head from 'next/head';
 
+import { ChildProp } from '@libs/types';
+
 interface Props {
   title?: string;
-  children?: Array<JSX.Element | null>;
+  children?: ChildProp;
 }
 
 export function PageLayout(props: Props): JSX.Element {
