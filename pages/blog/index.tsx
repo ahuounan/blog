@@ -32,8 +32,7 @@ export default function Blog(props: Props): JSX.Element {
                   navigate(post.id);
                 }}
                 key={post.id}
-                title={`Post ${post.id}`}
-              >
+                title={`Post ${post.id}`}>
                 lorem ipsum
               </PostLayout>
             ))}

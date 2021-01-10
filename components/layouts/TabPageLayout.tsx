@@ -20,7 +20,9 @@ export function TabPageLayout(props: Props): JSX.Element {
         <Div css={styles.navbarContainer} as="header">
           {navbar}
         </Div>
-        <Div css={styles.bodyContainer} as="main">{body}</Div>
+        <Div css={styles.bodyContainer} as="main">
+          {body}
+        </Div>
         <Div css={styles.watermarkContainer} as="picture">
           <OuNanSealScript css={styles.watermark} fill="rgba(0, 0, 0, 0.15)" />
         </Div>
