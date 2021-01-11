@@ -47,8 +47,8 @@
         ]
       }
     ],
-    "react/react-in-jsx-scope": 0,
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "react/react-in-jsx-scope": 0
   },
   "settings": {
     "import/parsers": {
@@ -60,5 +60,14 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "plugins": ["react", "import"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0
+      }
+    }
+  ]
 }
