@@ -40,6 +40,7 @@ describe("components/icons/Hu", () => {
 
       <svg
         class="_dwaGfn _fAhnJC _jrwqAH _YTfjP _kIpwxQ _cqwUsQ _dxHRVl _fZfkrG scid-PJLV"
+        data-testid="logo"
         enable-background="new 0 0 400 400"
         viewBox="0 0 400 400"
         xmlns="http://www.w3.org/2000/svg"
