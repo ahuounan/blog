@@ -5,18 +5,34 @@ const testPathRegex = /\w*__tests__\w*/;
 const componentsPagePath = "src/components/pages";
 const pagesPath = "src/pages";
 
-const componentsPages = fs.readdirSync(componentsPagePath, {
+function linkDir(dir, parent) {
+  for (const page of dir) {
+    console.log(page.name);
+    if (testPathRegex.test(page.name)) {
+      continue;
+    }
+    const targetPath = path.resolve(path.join(componentsPagePath, parent, page.name));
+    const destPath = path.resolve(path.join(pagesPath, parent, page.name));
+
+    if (page.isDirectory()) {
+      fs.mkdirSync(destPath);
+      linkDir(
+        fs.readdirSync(targetPath, {
+          withFileTypes: true
+        }),
+        page.name
+      );
+    } else {
+      if (fs.existsSync(destPath)) {
+        fs.rmSync(destPath, { recursive: true });
+      }
+      fs.symlinkSync(targetPath, destPath, { type: page.type });
+    }
+  }
+}
+
+const componentsPagesDir = fs.readdirSync(componentsPagePath, {
   withFileTypes: true
 });
 
-for (const page of componentsPages) {
-  if (testPathRegex.test(page.name)) {
-    continue;
-  }
-  const targetPath = path.resolve(path.join(componentsPagePath, page.name));
-  const destPath = path.resolve(path.join(pagesPath, page.name));
-  if (fs.existsSync(destPath)) {
-    fs.rmSync(destPath);
-  }
-  fs.symlinkSync(targetPath, destPath, { type: page.type });
-}
+linkDir(componentsPagesDir, "/");
