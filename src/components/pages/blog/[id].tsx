@@ -1,19 +1,22 @@
+import { ParsedUrlQuery } from "querystring";
+
 import { GetServerSideProps } from "next";
 
 import { Div } from "@components/primitives/Div";
-import { PostsController } from "src/controllers/posts";
-import { PostData } from "src/controllers/posts/types";
+import { PostsController } from "@controllers/posts";
+import { PostData } from "@controllers/posts/types";
+import { Identifier } from "@controllers/types";
 
-type Params = {
+export interface Params {
   id: string;
-};
+}
 
-interface Props {
-  id?: string;
+export interface Props {
+  id?: Identifier;
   post: Partial<PostData>;
 }
 
-export default function Post(props: Props): JSX.Element {
+export default function BlogPost(props: Props): JSX.Element {
   return (
     <Div>
       Post {props.post.id} {props.post.metadata?.author}
@@ -21,7 +24,9 @@ export default function Post(props: Props): JSX.Element {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<Props, Params & ParsedUrlQuery> = async ({
+  params
+}) => {
   const post = params?.id ? (await PostsController.get(params?.id)) ?? {} : {};
 
   return {

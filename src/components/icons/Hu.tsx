@@ -10,6 +10,7 @@ export function Hu(props: Props): JSX.Element {
   const css = Object.assign({}, styles.container, { height: size, width: size });
   return (
     <Svg
+      data-testid="logo"
       css={css}
       enableBackground="new 0 0 400 400"
       viewBox="0 0 400 400"

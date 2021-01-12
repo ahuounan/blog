@@ -1,38 +1,12 @@
-import { render, fireEvent } from "@testing-library/react";
-import * as Router from "next/router";
-import { NextRouter } from "next/router";
+import { fireEvent } from "@testing-library/react";
 
-import { Navbar, routes } from "../Navbar";
+import { router, renderWithRouter } from "jestUtils/renderWithRouter";
 
-const currentRoute = routes[0];
-const pathname = currentRoute.label;
-
-const router: NextRouter = ({
-  push: jest.fn(() => Promise.resolve(true)),
-  pathname,
-  replace: jest.fn(() => Promise.resolve(true)),
-  reload: jest.fn(),
-  back: jest.fn(),
-  prefetch: jest.fn(() => Promise.resolve()),
-  beforePopState: jest.fn(),
-  events: {
-    on: jest.fn(),
-    off: jest.fn(),
-    emit: jest.fn()
-  },
-  isFallback: false,
-  route: currentRoute.path,
-  asPath: currentRoute.path,
-  basePath: currentRoute.path,
-  query: {}
-} as unknown) as NextRouter;
-jest.spyOn(Router, "useRouter").mockReturnValue(router);
-
-window.scrollTo = jest.fn();
+import { routes, Navbar } from "../Navbar";
 
 describe("components/patterns/Navbar", () => {
   it("should render", () => {
-    const { container } = render(<Navbar />);
+    const { container } = renderWithRouter(<Navbar />);
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       ._exCLGr {
@@ -109,6 +83,10 @@ describe("components/patterns/Navbar", () => {
 
       ._jcoIeq {
         white-space: nowrap;
+      }
+
+      ._hOSNUN {
+        text-decoration: underline;
       }
 
       ._jBnBDx {
@@ -290,6 +268,7 @@ describe("components/patterns/Navbar", () => {
           >
             <svg
               class="_dwaGfn _fAhnJC _jrwqAH _YTfjP _kIpwxQ _cqwUsQ _dxHRVl _fZfkrG scid-PJLV"
+              data-testid="logo"
               enable-background="new 0 0 400 400"
               viewBox="0 0 400 400"
               xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +293,7 @@ describe("components/patterns/Navbar", () => {
           class="_gDrjVA _fXfOg scid-PJLV"
         >
           <span
-            class="_jcoIeq _fXfOg _gDrjVA _cTdvuC _jKvetE _dpsWWy _ikSLYP _erQgkq _gytQBG _gBiiYF _UqFtx _joOXRK _eGzkFp _buJBFI _hYAaiy _krAJqJ _bIkOjK scid-estEMA"
+            class="_hOSNUN _jcoIeq _fXfOg _gDrjVA _cTdvuC _jKvetE _dpsWWy _ikSLYP _erQgkq _gytQBG _gBiiYF _UqFtx _joOXRK _eGzkFp _buJBFI _hYAaiy _krAJqJ _bIkOjK scid-estEMA"
           >
             <a
               class="_jtlYiP _fFQvsX _GgRDj _cftqkj _bbeIee _dIMaoJ _bVGvky _eAgUIx _jBnBDx _bOkUqu _cajaAx _nkqMy _bBznkm scid-fmHILy"
@@ -392,19 +371,26 @@ describe("components/patterns/Navbar", () => {
     `);
   });
 
-  it("should navigate to home on logo click", () => {
-    const { getByText } = render(<Navbar />);
-
+  it("should navigate to home on name click", () => {
+    const { getByText } = renderWithRouter(<Navbar />);
     fireEvent.click(getByText("Alan Hu"));
+
     expect(router.push).toHaveBeenCalledWith("/");
   });
 
-  routes.forEach(route => {
-    it("should navigate to each route on click", () => {
-      const { getByText } = render(<Navbar />);
+  it("should navigate to home on logo click", () => {
+    const { getByTestId } = renderWithRouter(<Navbar />);
+    fireEvent.click(getByTestId("logo"));
 
-      fireEvent.click(getByText(route.label));
-      expect(router.push).toHaveBeenCalled();
-    });
+    expect(router.push).toHaveBeenCalledWith("/");
   });
+
+  for (const route of routes) {
+    it("should navigate to each route on click", () => {
+      const { getByText } = renderWithRouter(<Navbar />);
+      fireEvent.click(getByText(route.label));
+
+      expect(router.push).toHaveBeenCalledWith(route.path, route.path, {});
+    });
+  }
 });

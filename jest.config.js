@@ -1,4 +1,4 @@
-const { pathsToModuleNameMapper } = require("./jest/pathsToModuleNameMapper");
+const { pathsToModuleNameMapper } = require("./jestUtils/pathsToModuleNameMapper");
 const { compilerOptions } = require("./tsconfig.json");
 
 module.exports = {
@@ -9,20 +9,17 @@ module.exports = {
   coverageDirectory: "coverage",
   coverageThreshold: {
     global: {
-      branch: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
+      branch: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90
     }
   },
   globals: {
-    __TEST__: true,
-    "ts-jest": {
-      tsconfig: "tsconfig.jest.json"
-    }
+    __TEST__: true
   },
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["./jest/setup-tests.ts"],
+  setupFilesAfterEnv: ["./jestUtils/setupTests.ts"],
   moduleDirectories: ["node_modules", "src"],
   modulePaths: ["<rootDir>/", "<rootDir>/libs"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths)

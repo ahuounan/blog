@@ -9,7 +9,7 @@ import { Navbar } from "@components/patterns/Navbar";
 import { PostsController } from "src/controllers/posts";
 import { PostData } from "src/controllers/posts/types";
 
-interface Props {
+export interface Props {
   posts: PostData[];
 }
 
@@ -32,8 +32,8 @@ export default function Blog(props: Props): JSX.Element {
                   navigate(post.id);
                 }}
                 key={post.id}
-                title={`Post ${post.id}`}>
-                lorem ipsum
+                title={post.title}>
+                {post.content.slice(200) + "..."}
               </PostLayout>
             ))}
           </>
