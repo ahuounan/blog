@@ -7,7 +7,6 @@ const pagesPath = "src/pages";
 
 function linkDir(dir, parent) {
   for (const page of dir) {
-    console.log(page.name);
     if (testPathRegex.test(page.name)) {
       continue;
     }
