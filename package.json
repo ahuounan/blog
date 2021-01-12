@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "static:format": "prettier .",
+    "static:format": "prettier -l .",
     "static:typecheck": "tsc",
     "static:lint": "eslint .",
     "static:format:write": "prettier --write .",
