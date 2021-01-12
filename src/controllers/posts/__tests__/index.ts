@@ -1,43 +1,23 @@
-import { Identifier } from "@controllers/types";
+import MOCK_POSTS from "localDatabase/mockPosts.json";
 
 import { PostsController } from "../index";
-import { PostData } from "../types";
-
-const TEST_DATA: Record<Identifier, PostData> = {
-  1: {
-    id: 1,
-    metadata: {
-      createdAt: 1610388199612,
-      author: "Alan Hu"
-    },
-    title: "test title",
-    content: "test content"
-  },
-  2: {
-    id: 2,
-    metadata: {
-      createdAt: 1610388199612,
-      author: "Alan Hu"
-    },
-    title: "test title 2",
-    content: "test content 2"
-  }
-};
 
 jest.mock("fs", () => ({
-  readFileSync: jest.fn(() => JSON.stringify(TEST_DATA))
+  readFileSync: jest.fn(() => JSON.stringify(MOCK_POSTS))
 }));
+
+const MOCK_POSTS_ARRAY = Object.values(MOCK_POSTS);
 
 describe("controllers/posts", () => {
   it("should getAll", async () => {
-    expect(await PostsController.getAll()).toEqual(Object.values(TEST_DATA));
+    expect(await PostsController.getAll()).toEqual(Object.values(MOCK_POSTS_ARRAY));
   });
 
   it("should get valid data", async () => {
-    expect(await PostsController.get(1)).toEqual(TEST_DATA[1]);
+    expect(await PostsController.get(MOCK_POSTS_ARRAY[1].id)).toEqual(MOCK_POSTS_ARRAY[1]);
   });
 
   it("should get null data", async () => {
-    expect(await PostsController.get(3)).toBeNull();
+    expect(await PostsController.get(15)).toBeNull();
   });
 });

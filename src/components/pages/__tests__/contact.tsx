@@ -2,7 +2,7 @@ import { renderWithRouter } from "jestUtils/renderWithRouter";
 
 import Contact from "../contact";
 
-describe("components/pages", () => {
+describe("components/pages/contact", () => {
   describe("Contact", () => {
     it("should render", () => {
       const { container } = renderWithRouter(<Contact />);

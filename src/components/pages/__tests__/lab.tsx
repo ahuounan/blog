@@ -2,7 +2,7 @@ import { renderWithRouter } from "jestUtils/renderWithRouter";
 
 import Lab from "../lab";
 
-describe("components/pages", () => {
+describe("components/pages/lab", () => {
   describe("Lab", () => {
     it("should render", () => {
       const { container } = renderWithRouter(<Lab />);

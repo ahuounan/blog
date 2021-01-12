@@ -2,7 +2,7 @@ import { renderWithRouter } from "jestUtils/renderWithRouter";
 
 import Resume from "../resume";
 
-describe("components/pages", () => {
+describe("components/pages/resume", () => {
   describe("Resume", () => {
     it("should render", () => {
       const { container } = renderWithRouter(<Resume />);
