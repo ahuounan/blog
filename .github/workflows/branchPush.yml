@@ -1,0 +1,11 @@
+name: Branch Push
+on: push
+jobs:
+  test:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install modules
+        run: npm i
+      - name: Run tests
+        run: npm t
