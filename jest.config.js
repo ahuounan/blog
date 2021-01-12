@@ -22,7 +22,7 @@ module.exports = {
     }
   },
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["./jest/setup-tests.ts"],
+  setupFilesAfterEnv: ["./jest/setupTests.ts"],
   moduleDirectories: ["node_modules", "src"],
   modulePaths: ["<rootDir>/", "<rootDir>/libs"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths)
