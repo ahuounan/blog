@@ -1,8 +1,8 @@
-import { readFileSync, promises as fs } from 'fs';
+import { readFileSync, promises as fs } from "fs";
 
-import { Logger } from '@libs/Logger';
+import { log } from "libs/log";
 
-import { Controller, Identifiable } from './types';
+import { Controller, Identifiable, Identifier } from "./types";
 
 type Validate<T extends Identifiable> = (data: T) => boolean;
 
@@ -10,17 +10,15 @@ export class LocalDatabaseController<T extends Identifiable> implements Controll
   protected path: string;
   protected validate: Validate<T>;
   protected cache: Record<string, T> = {};
-  protected ready: boolean;
 
   constructor(path: string, validate: Validate<T>) {
     this.path = path;
     this.validate = validate;
-    const rawData = readFileSync(this.path);
     try {
+      const rawData = readFileSync(this.path);
       this.cache = JSON.parse(rawData.toString());
-      this.ready = true;
     } catch (e) {
-      Logger.log(e, 'error');
+      log(e, "error");
       this.cache = {};
     }
   }
@@ -29,7 +27,7 @@ export class LocalDatabaseController<T extends Identifiable> implements Controll
     return Object.values(this.cache);
   }
 
-  async get(id: string): Promise<T | null> {
+  async get(id: Identifier): Promise<T | null> {
     if (!this.cache || !this.cache[id]) return null;
 
     return this.cache[id];
@@ -47,8 +45,8 @@ export class LocalDatabaseController<T extends Identifiable> implements Controll
     return this.cache[data.id];
   }
 
-  async update(id: string, data: T): Promise<T | null> {
-    if (!this.validate(data) || id !== data.id) {
+  async update(id: Identifier, data: T): Promise<T | null> {
+    if (id !== data.id || !this.validate(data)) {
       return null;
     }
 
@@ -62,7 +60,7 @@ export class LocalDatabaseController<T extends Identifiable> implements Controll
     return this.cache[id];
   }
 
-  async destroy(id: string): Promise<boolean> {
+  async destroy(id: Identifier): Promise<boolean> {
     delete this.cache[id];
 
     return this.sync();
@@ -71,10 +69,10 @@ export class LocalDatabaseController<T extends Identifiable> implements Controll
   protected async sync(): Promise<boolean> {
     try {
       await fs.writeFile(this.path, JSON.stringify(this.cache));
-      return Promise.resolve(true);
+      return true;
     } catch (e) {
-      Logger.log(e, 'error');
-      return Promise.reject(false);
+      log(e, "error");
+      return false;
     }
   }
 }

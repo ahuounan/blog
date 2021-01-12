@@ -1,25 +1,25 @@
-import { styled } from '@stitches.config';
+import { styled } from "@stitches.config";
 
-export const Text = styled('p', {
-  fontSize: '$1',
+export const Text = styled("p", {
+  fontSize: "$1",
   fontWeight: 400,
-  fontFamily: 'NanumGothic',
+  fontFamily: "NanumGothic",
   margin: 0,
   padding: 0,
 
   variants: {
     type: {
       body: {
-        fontSize: '$1'
+        fontSize: "$1"
       },
       subHeading: {
-        fontSize: '$2'
+        fontSize: "$2"
       },
       heading: {
-        fontSize: '$3'
+        fontSize: "$3"
       },
       title: {
-        fontSize: '$4'
+        fontSize: "$4"
       }
     }
   }

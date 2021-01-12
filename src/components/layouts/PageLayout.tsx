@@ -1,6 +1,6 @@
-import Head from 'next/head';
+import Head from "next/head";
 
-import { ChildProp } from '@libs/types';
+import { ChildProp } from "libs/types";
 
 interface Props {
   title?: string;
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function PageLayout(props: Props): JSX.Element {
-  const { title = '', children } = props;
+  const { title = "", children } = props;
 
   return (
     <>

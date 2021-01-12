@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { LinkedIn } from '../LinkedIn';
+import { LinkedIn } from "../LinkedIn";
 
-describe('components/icons/LinkedIn', () => {
-  it('should render', () => {
+describe("components/icons/LinkedIn", () => {
+  it("should render", () => {
     const { container } = render(<LinkedIn />);
     expect(container.firstChild).toMatchInlineSnapshot(`
       <svg

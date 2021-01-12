@@ -18,11 +18,11 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@controllers/*": ["src/controllers/*"],
-      "@libs/*": ["src/libs/*"],
+      "@libs/*": ["libs/*"],
       "@pages/*": ["src/pages/*"],
       "@stitches.config": ["src/stitches.config"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest/snapshot-resolver.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

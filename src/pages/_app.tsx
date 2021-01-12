@@ -1,7 +1,7 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
+import { AppProps } from "next/app";
+import Head from "next/head";
 
-import 'src/globals.css';
+import "src/globals.css";
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   return (

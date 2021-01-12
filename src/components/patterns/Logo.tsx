@@ -1,7 +1,7 @@
-import { Hu } from '@components/icons/Hu';
-import { Div } from '@components/primitives/Div';
-import { Text } from '@components/primitives/Text';
-import { CSSProp } from '@stitches.config';
+import { Hu } from "@components/icons/Hu";
+import { Div } from "@components/primitives/Div";
+import { Text } from "@components/primitives/Text";
+import { CSSProp } from "@stitches.config";
 
 export function Logo(): JSX.Element {
   return (
@@ -16,15 +16,15 @@ export function Logo(): JSX.Element {
 
 const styles: Record<string, CSSProp> = {
   container: {
-    background: 'transparent',
-    border: 'none',
-    outline: 'none',
-    display: 'flex',
-    alignItems: 'center',
+    background: "transparent",
+    border: "none",
+    outline: "none",
+    display: "flex",
+    alignItems: "center",
     padding: 0
   },
   name: {
-    marginLeft: '$0',
-    textAlign: 'left'
+    marginLeft: "$0",
+    textAlign: "left"
   }
 };

@@ -1,5 +1,5 @@
-import { Svg } from '@components/primitives/Svg';
-import { CSSProp } from '@stitches.config';
+import { Svg } from "@components/primitives/Svg";
+import { CSSProp } from "@stitches.config";
 
 interface Props {
   css?: CSSProp;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function OuNanSealScript(props: Props): JSX.Element {
-  const { css, fill = '#010102' } = props;
+  const { css, fill = "#010102" } = props;
   return (
     <Svg
       css={css}

@@ -47,8 +47,12 @@
         ]
       }
     ],
-    "react/react-in-jsx-scope": 0,
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 2,
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      { "ignoreRestSiblings": true, "argsIgnorePattern": "^_" }
+    ],
+    "react/react-in-jsx-scope": 0
   },
   "settings": {
     "import/parsers": {
@@ -60,5 +64,14 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "plugins": ["react", "import"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0
+      }
+    }
+  ]
 }

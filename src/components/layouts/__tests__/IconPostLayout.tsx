@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { IconPostLayout } from '../IconPostLayout';
+import { IconPostLayout } from "../IconPostLayout";
 
-describe('components/layouts/IconPostLayout', () => {
-  it('should render with no props', () => {
+describe("components/layouts/IconPostLayout", () => {
+  it("should render with no props", () => {
     const { container } = render(<IconPostLayout />);
 
     expect(container.firstChild).toMatchInlineSnapshot(`
@@ -73,7 +73,7 @@ describe('components/layouts/IconPostLayout', () => {
     `);
   });
 
-  it('should render with children', () => {
+  it("should render with children", () => {
     const { container } = render(
       <IconPostLayout>
         <div>child</div>

@@ -1,12 +1,12 @@
-import { Svg } from '@components/primitives/Svg';
-import { CSSProp, CSSTokens, ScaleValues } from '@stitches.config';
+import { Svg } from "@components/primitives/Svg";
+import { CSSProp, CSSTokens, ScaleValues } from "@stitches.config";
 
 interface Props {
-  size?: ScaleValues | keyof CSSTokens['sizes'];
+  size?: ScaleValues | keyof CSSTokens["sizes"];
 }
 
 export function Hu(props: Props): JSX.Element {
-  const { size = '$3' } = props;
+  const { size = "$3" } = props;
   const css = Object.assign({}, styles.container, { height: size, width: size });
   return (
     <Svg
@@ -29,7 +29,7 @@ export function Hu(props: Props): JSX.Element {
 const styles: Record<string, CSSProp> = {
   container: {
     flexShrink: 0,
-    backgroundColor: '$logoBackground',
-    borderRadius: '10%'
+    backgroundColor: "$logoBackground",
+    borderRadius: "10%"
   }
 };

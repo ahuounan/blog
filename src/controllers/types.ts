@@ -7,5 +7,7 @@ export interface Controller<T> {
 }
 
 export interface Identifiable {
-  id: string;
+  id: Identifier;
 }
+
+export type Identifier = string | number;

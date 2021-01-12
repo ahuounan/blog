@@ -1,18 +1,16 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps } from "next";
 
-import { PostLayout } from '@components/layouts/PostLayout';
-import { SectionLayout } from '@components/layouts/SectionLayout';
-import { TabPageLayout } from '@components/layouts/TabPageLayout';
-import { Background } from '@components/patterns/Background';
-import { Navbar } from '@components/patterns/Navbar';
+import { PostLayout } from "@components/layouts/PostLayout";
+import { SectionLayout } from "@components/layouts/SectionLayout";
+import { TabPageLayout } from "@components/layouts/TabPageLayout";
+import { Background } from "@components/patterns/Background";
+import { Navbar } from "@components/patterns/Navbar";
 
 interface Props {
   text: string;
 }
 
-export default function Lab(props: Props): JSX.Element {
-  const { text } = props;
-
+export default function Lab(): JSX.Element {
   return (
     <TabPageLayout
       background={<Background />}
@@ -34,7 +32,7 @@ export default function Lab(props: Props): JSX.Element {
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   return {
     props: {
-      text: 'yo'
+      text: "yo"
     }
   };
 };

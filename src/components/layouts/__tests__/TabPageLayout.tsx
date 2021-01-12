@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { TabPageLayout } from '../TabPageLayout';
+import { TabPageLayout } from "../TabPageLayout";
 
-describe('components/layouts/TabPageLayout', () => {
-  it('should render with title', () => {
+describe("components/layouts/TabPageLayout", () => {
+  it("should render with title", () => {
     const { container } = render(<TabPageLayout title="test" />);
 
     expect(container.firstChild).toMatchInlineSnapshot(`
@@ -37,7 +37,7 @@ describe('components/layouts/TabPageLayout', () => {
     `);
   });
 
-  it('should render without background', () => {
+  it("should render without background", () => {
     const { container } = render(
       <TabPageLayout title="Test" navbar={<div>navbar</div>} body={<div>body</div>} />
     );
@@ -73,7 +73,7 @@ describe('components/layouts/TabPageLayout', () => {
     `);
   });
 
-  it('should render with background', () => {
+  it("should render with background", () => {
     const { container } = render(
       <TabPageLayout
         title="Test"

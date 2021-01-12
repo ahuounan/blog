@@ -1,8 +1,8 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps } from "next";
 
-import { Div } from '@components/primitives/Div';
-import { PostsController } from 'src/controllers/posts';
-import { PostData } from 'src/controllers/posts/types';
+import { Div } from "@components/primitives/Div";
+import { PostsController } from "src/controllers/posts";
+import { PostData } from "src/controllers/posts/types";
 
 type Params = {
   id: string;

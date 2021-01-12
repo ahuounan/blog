@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { Hu } from '../Hu';
+import { Hu } from "../Hu";
 
-describe('components/icons/Hu', () => {
-  it('should render', () => {
+describe("components/icons/Hu", () => {
+  it("should render", () => {
     const { container } = render(<Hu />);
     expect(container.firstChild).toMatchInlineSnapshot(`
       ._fZfkrG {

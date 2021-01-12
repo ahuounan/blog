@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const testPathRegex = /\w*__tests__\w*/;
-const componentsPagePath = 'src/components/pages';
-const pagesPath = 'src/pages';
+const componentsPagePath = "src/components/pages";
+const pagesPath = "src/pages";
 
 const componentsPages = fs.readdirSync(componentsPagePath, {
   withFileTypes: true
