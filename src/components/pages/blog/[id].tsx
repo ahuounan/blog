@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 
 import { Div } from "@components/primitives/Div";
+import { Identifier } from "@controllers/types";
 import { PostsController } from "src/controllers/posts";
 import { PostData } from "src/controllers/posts/types";
 
@@ -9,11 +10,11 @@ type Params = {
 };
 
 interface Props {
-  id?: string;
+  id?: Identifier;
   post: Partial<PostData>;
 }
 
-export default function Post(props: Props): JSX.Element {
+export default function BlogPost(props: Props): JSX.Element {
   return (
     <Div>
       Post {props.post.id} {props.post.metadata?.author}

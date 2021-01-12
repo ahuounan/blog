@@ -1,5 +1,3 @@
-import { GetServerSideProps } from "next";
-
 import { LinkedIn } from "@components/icons/LinkedIn";
 import { LocationPin } from "@components/icons/LocationPin";
 import { Mail } from "@components/icons/Mail";
@@ -14,10 +12,6 @@ import { Form } from "@components/primitives/Form";
 import { Input } from "@components/primitives/Input";
 import { Text } from "@components/primitives/Text";
 import { CSSProp } from "@stitches.config";
-
-interface Props {
-  text: string;
-}
 
 const urls = {
   linkedIn: "https://www.linkedin.com/in/ahuounan/",
@@ -64,14 +58,6 @@ export default function Contact(): JSX.Element {
     />
   );
 }
-
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  return {
-    props: {
-      text: "yo"
-    }
-  };
-};
 
 const styles: Record<string, CSSProp> = {
   icon: {
