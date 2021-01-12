@@ -14,7 +14,6 @@ import { Form } from "@components/primitives/Form";
 import { Input } from "@components/primitives/Input";
 import { Text } from "@components/primitives/Text";
 import { CSSProp } from "@stitches.config";
-import { log } from "libs/log";
 
 interface Props {
   text: string;
@@ -28,7 +27,6 @@ const urls = {
 };
 
 export default function Contact(): JSX.Element {
-  log("test");
   return (
     <TabPageLayout
       title="Contact"
