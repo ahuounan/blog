@@ -16,10 +16,7 @@ module.exports = {
     }
   },
   globals: {
-    __TEST__: true,
-    "ts-jest": {
-      tsconfig: "tsconfig.jest.json"
-    }
+    __TEST__: true
   },
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["./jest/setupTests.ts"],
