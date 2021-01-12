@@ -1,8 +1,12 @@
+const { pathsToModuleNameMapper } = require("./jest/pathsToModuleNameMapper");
+const { compilerOptions } = require("./tsconfig.json");
+
 module.exports = {
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
-  coverageDirectory: 'coverage',
+  collectCoverageFrom: ["src/**/*.{ts,tsx}", "libs/**/*"],
+  coveragePathIgnorePatterns: ["src/pages/*", "src/stitches.config.ts"],
+  coverageDirectory: "coverage",
   coverageThreshold: {
     global: {
       branch: 100,
@@ -12,16 +16,14 @@ module.exports = {
     }
   },
   globals: {
-    __TEST__: true
+    __TEST__: true,
+    "ts-jest": {
+      tsconfig: "tsconfig.jest.json"
+    }
   },
-  snapshotSerializers: ['jest-stitches'],
-  setupFilesAfterEnv: ['./jest/setup-tests.ts'],
-  moduleDirectories: ['node_modules', 'src'],
-  moduleNameMapper: {
-    '@components/(.*)': '<rootDir>/src/components/$1',
-    '@controllers/(.*)': '<rootDir>/src/controllers/$1',
-    '@libs/(.*)': '<rootDir>/src/libs/$1',
-    '@pages/(.*)': '<rootDir>/src/pages/$1',
-    '@stitches.config': '<rootDir>/src/stitches.config'
-  }
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["./jest/setup-tests.ts"],
+  moduleDirectories: ["node_modules", "src"],
+  modulePaths: ["<rootDir>/", "<rootDir>/libs"],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths)
 };

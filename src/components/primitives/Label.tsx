@@ -1,3 +1,3 @@
-import { styled } from '@stitches.config';
+import { styled } from "@stitches.config";
 
-export const Label = styled('label', {});
+export const Label = styled("label", {});

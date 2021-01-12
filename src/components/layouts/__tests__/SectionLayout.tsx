@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { SectionLayout } from '../SectionLayout';
+import { SectionLayout } from "../SectionLayout";
 
-describe('components/layouts/SectionLayout', () => {
-  it('should render with title', () => {
+describe("components/layouts/SectionLayout", () => {
+  it("should render with title", () => {
     const { container } = render(<SectionLayout title="test" />);
 
     expect(container.firstChild).toMatchInlineSnapshot(`
@@ -165,7 +165,7 @@ describe('components/layouts/SectionLayout', () => {
     `);
   });
 
-  it('should render with children', () => {
+  it("should render with children", () => {
     const { container } = render(
       <SectionLayout title="Test">
         <div>test child</div>

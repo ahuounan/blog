@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { OuNanSealScript } from '../OuNanSealScript';
+import { OuNanSealScript } from "../OuNanSealScript";
 
-describe('components/icons/OuNanSealScript', () => {
-  it('should render', () => {
+describe("components/icons/OuNanSealScript", () => {
+  it("should render", () => {
     const { container } = render(<OuNanSealScript />);
     expect(container.firstChild).toMatchInlineSnapshot(`
       <svg

@@ -1,11 +1,11 @@
-import { LocalDatabaseController } from 'src/controllers/localController';
+import { LocalDatabaseController } from "src/controllers/localController";
 
-import { PostData } from './types';
-import { isPostData } from './validators';
+import { PostData } from "./types";
+import { isPostData } from "./validators";
 
 class LocalPostsController extends LocalDatabaseController<PostData> {
   constructor() {
-    super('localDatabase/posts.json', isPostData);
+    super("localDatabase/posts.json", isPostData);
   }
 }
 

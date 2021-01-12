@@ -1,7 +1,7 @@
-import { Button } from '@components/primitives/Button';
-import { Div } from '@components/primitives/Div';
-import { ChildProp } from '@libs/types';
-import { CSSProp } from '@stitches.config';
+import { Button } from "@components/primitives/Button";
+import { Div } from "@components/primitives/Div";
+import { CSSProp } from "@stitches.config";
+import { ChildProp } from "libs/types";
 
 interface Props {
   children?: ChildProp;
@@ -20,17 +20,17 @@ export function IconPostLayout(props: Props): JSX.Element {
 
 const styles: Record<string, CSSProp> = {
   container: {
-    padding: '$1',
+    padding: "$1",
     margin: 0,
-    width: '100%',
-    position: 'relative',
-    background: 'transparent',
-    textAlign: 'left',
+    width: "100%",
+    position: "relative",
+    background: "transparent",
+    textAlign: "left",
     zIndex: 2
   },
   body: {
-    position: 'relative',
-    background: 'inherit',
+    position: "relative",
+    background: "inherit",
     zIndex: 2
   }
 };

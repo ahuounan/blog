@@ -1,35 +1,35 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment } from "react";
 
-import { Button } from '@components/primitives/Button';
-import { Div } from '@components/primitives/Div';
-import { Separator } from '@components/primitives/Separator';
-import { Text } from '@components/primitives/Text';
-import { CSSProp, styled } from '@stitches.config';
+import { Button } from "@components/primitives/Button";
+import { Div } from "@components/primitives/Div";
+import { Separator } from "@components/primitives/Separator";
+import { Text } from "@components/primitives/Text";
+import { CSSProp, styled } from "@stitches.config";
 
-import { Logo } from './Logo';
+import { Logo } from "./Logo";
 
-const routes = [
+export const routes = [
   {
-    path: '/',
-    label: 'Home'
+    path: "/",
+    label: "Home"
   },
   {
-    path: '/resume',
-    label: 'Resume'
+    path: "/resume",
+    label: "Resume"
   },
   {
-    path: '/blog',
-    label: 'Blog'
+    path: "/blog",
+    label: "Blog"
   },
   {
-    path: '/lab',
-    label: 'Lab'
+    path: "/lab",
+    label: "Lab"
   },
   {
-    path: '/contact',
-    label: 'Contact'
+    path: "/contact",
+    label: "Contact"
   }
 ];
 
@@ -38,7 +38,7 @@ export function Navbar(): JSX.Element {
 
   return (
     <Div as="nav" css={styles.container}>
-      <Button css={styles.logo} onClick={() => router.push('/')}>
+      <Button css={styles.logo} onClick={() => router.push("/")}>
         <Logo />
       </Button>
       <Div css={styles.right}>
@@ -59,47 +59,47 @@ export function Navbar(): JSX.Element {
   );
 }
 
-const styles: Record<string, CSSProp> = {
+export const styles: Record<string, CSSProp> = {
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
     zIndex: 1
   },
   right: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center"
   },
   text: {
-    height: '$2',
-    width: '100%'
+    height: "$2",
+    width: "100%"
   },
   logo: {
-    hoverFdbk: '$transparent',
-    borderRadius: '$0',
-    paddingRight: '$0'
+    hoverFdbk: "$transparent",
+    borderRadius: "$0",
+    paddingRight: "$0"
   }
 };
 
-const NavbarSection = styled('span', {
-  whiteSpace: 'nowrap',
-  display: 'flex',
-  alignItems: 'center',
-  padding: '0 $0',
-  borderRadius: '$0',
-  hoverFdbk: '$transparent',
-  ':first-child': {
-    marginLeft: '-$0'
+const NavbarSection = styled("span", {
+  whiteSpace: "nowrap",
+  display: "flex",
+  alignItems: "center",
+  padding: "0 $0",
+  borderRadius: "$0",
+  hoverFdbk: "$transparent",
+  ":first-child": {
+    marginLeft: "-$0"
   },
-  ':last-child': {
-    marginRight: '-$0'
+  ":last-child": {
+    marginRight: "-$0"
   },
   variants: {
     isActive: {
       true: {
-        textDecoration: 'underline'
+        textDecoration: "underline"
       }
     }
   }

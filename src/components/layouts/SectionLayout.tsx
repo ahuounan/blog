@@ -1,8 +1,8 @@
-import { Div } from '@components/primitives/Div';
-import { Separator } from '@components/primitives/Separator';
-import { Text } from '@components/primitives/Text';
-import { ChildProp } from '@libs/types';
-import { CSSProp } from '@stitches.config';
+import { Div } from "@components/primitives/Div";
+import { Separator } from "@components/primitives/Separator";
+import { Text } from "@components/primitives/Text";
+import { CSSProp } from "@stitches.config";
+import { ChildProp } from "libs/types";
 
 interface Props {
   title: string;
@@ -24,26 +24,26 @@ export function SectionLayout(props: Props): JSX.Element {
 
 const styles: Record<string, CSSProp> = {
   container: {
-    padding: '$1 0',
-    margin: '$1 0',
-    width: '100%',
-    position: 'relative',
-    background: 'transparent',
-    textAlign: 'left',
+    padding: "$1 0",
+    margin: "$1 0",
+    width: "100%",
+    position: "relative",
+    background: "transparent",
+    textAlign: "left",
     zIndex: 2
   },
   header: {
-    position: 'relative',
+    position: "relative",
     zIndex: 2,
     background:
-      'linear-gradient(90deg, rgba(251, 245, 245, 1) 90%, rgba(251, 245, 245, 0.8) 95%, rgba(251,245,245,0) 100%)',
-    display: 'inline-block',
-    padding: '0 $0',
-    marginLeft: '-$0',
+      "linear-gradient(90deg, rgba(251, 245, 245, 1) 90%, rgba(251, 245, 245, 0.8) 95%, rgba(251,245,245,0) 100%)",
+    display: "inline-block",
+    padding: "0 $0",
+    marginLeft: "-$0",
     marginBottom: 0
   },
   separator: {
-    position: 'absolute',
-    top: '2rem'
+    position: "absolute",
+    top: "2rem"
   }
 };

@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { LocationPin } from '../LocationPin';
+import { LocationPin } from "../LocationPin";
 
-describe('components/icons/LocationPin', () => {
-  it('should render', () => {
+describe("components/icons/LocationPin", () => {
+  it("should render", () => {
     const { container } = render(<LocationPin />);
     expect(container.firstChild).toMatchInlineSnapshot(`
       <svg

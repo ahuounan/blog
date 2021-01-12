@@ -1,7 +1,7 @@
-import { OuNanSealScript } from '@components/icons/OuNanSealScript';
-import { PageLayout } from '@components/layouts/PageLayout';
-import { Div } from '@components/primitives/Div';
-import { CSSProp } from '@stitches.config';
+import { OuNanSealScript } from "@components/icons/OuNanSealScript";
+import { PageLayout } from "@components/layouts/PageLayout";
+import { Div } from "@components/primitives/Div";
+import { CSSProp } from "@stitches.config";
 
 interface Props {
   title: string;
@@ -37,53 +37,53 @@ const styles: Record<string, CSSProp> = {
     left: 0,
     bottom: 0,
     right: 0,
-    position: 'fixed',
+    position: "fixed",
     zIndex: -1
   },
   navbarContainer: {
-    width: '100%',
+    width: "100%",
     zIndex: 1
   },
   bodyContainer: {
-    width: '100%'
+    width: "100%"
   },
   contentContainer: {
-    maxWidth: '100vw',
-    width: 'max(80vh, 500px)',
+    maxWidth: "100vw",
+    width: "max(80vh, 500px)",
     minWidth: 320,
-    minHeight: 'max(100vh, 320px)',
-    margin: '0 auto',
-    padding: '$3 5vw 8vh 5vw',
+    minHeight: "max(100vh, 320px)",
+    margin: "0 auto",
+    padding: "$3 5vw 8vh 5vw",
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    background: '$paperWhite',
-    boxShadow: '0px 10px 15px -5px rgba(0,0,0,0.75)',
-    position: 'relative',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    background: "$paperWhite",
+    boxShadow: "0px 10px 15px -5px rgba(0,0,0,0.75)",
+    position: "relative",
     zIndex: 1
   },
   watermarkContainer: {
-    position: 'fixed',
-    maxWidth: '100vw',
-    width: 'max(80vh, 500px)',
+    position: "fixed",
+    maxWidth: "100vw",
+    width: "max(80vh, 500px)",
     minWidth: 320,
-    minHeight: 'max(100vh, 500px)',
-    maxHeight: '100%',
-    margin: '0 auto',
+    minHeight: "max(100vh, 500px)",
+    maxHeight: "100%",
+    margin: "0 auto",
     top: 0,
     left: 0,
     right: 0,
-    height: '100vh',
+    height: "100vh",
     zIndex: 0
   },
   watermark: {
-    position: 'absolute',
-    height: '30rem',
-    width: '10rem',
-    maxHeight: '80vh',
+    position: "absolute",
+    height: "30rem",
+    width: "10rem",
+    maxHeight: "80vh",
     zIndex: 0,
-    bottom: '8vh',
-    right: '5vw'
+    bottom: "8vh",
+    right: "5vw"
   }
 };

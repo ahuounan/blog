@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import { Mail } from '../Mail';
+import { Mail } from "../Mail";
 
-describe('components/icons/Mail', () => {
-  it('should render', () => {
+describe("components/icons/Mail", () => {
+  it("should render", () => {
     const { container } = render(<Mail />);
     expect(container.firstChild).toMatchInlineSnapshot(`
       <svg

@@ -1,80 +1,156 @@
-import fs from 'fs';
+import fs from "fs";
 
-import { LocalDatabaseController } from '@controllers/localController';
-import { Identifiable } from '@controllers/types';
-import * as LoggerModule from '@libs/Logger';
+import { log } from "libs/log";
 
-describe('controllers/localController', () => {
-  const testData = { 1: { id: 1, test: 'test' } };
-  const testDataAdd = { id: 2, test2: 'test2' };
-  const testDataUpdate = { id: 1, test: 'test2' };
-  const testPath = 'testPath';
-  let validate;
-  let localController;
-  let validateFail;
-  let localControllerFail;
+import { LocalDatabaseController } from "../localController";
 
-  beforeAll(() => {
-    jest.mock('fs');
-    jest.mock('@libs/Logger');
-    fs.readFileSync = jest.fn(() => JSON.stringify({ 1: { id: 1, test: 'test' } }));
-    LoggerModule.Logger = jest.fn();
-    fs.promises.writeFile = jest.fn(() => Promise.resolve());
+interface TEST_DATA_TYPE {
+  id: number;
+  test: string;
+}
+const TEST_PATH = "localDatabase/test.json";
+const TEST_PATH_INVALID = "invalid";
+const TEST_DATA: Record<string, TEST_DATA_TYPE> = { 1: { id: 1, test: "test" } };
+const TEST_DATA_ADD: TEST_DATA_TYPE = { id: 2, test: "test2" };
+const TEST_DATA_UPDATE: TEST_DATA_TYPE = { id: 1, test: "test2" };
+
+jest.mock("fs", () => ({
+  readFileSync: jest.fn(path => {
+    if (path === TEST_PATH) {
+      return JSON.stringify(TEST_DATA);
+    }
+    throw new Error();
+  }),
+  promises: {
+    writeFile: jest.fn(path => {
+      if (path === TEST_PATH) {
+        return Promise.resolve();
+      }
+      return Promise.reject();
+    })
+  }
+}));
+jest.mock("libs/log", () => ({
+  log: jest.fn()
+}));
+
+const validate = jest.fn(() => true);
+const validateFail = jest.fn(() => false);
+
+describe("controllers/localController", () => {
+  describe("constructor", () => {
+    it("should instantiate", () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+
+      expect(localController).toBeInstanceOf(LocalDatabaseController);
+      expect(fs.readFileSync).toHaveBeenCalledWith(TEST_PATH);
+    });
+
+    it("should log an error if readFile failed", () => {
+      new LocalDatabaseController(TEST_PATH_INVALID, validate);
+
+      expect(log).toHaveBeenCalled();
+    });
   });
 
-  beforeEach(() => {
-    validate = jest.fn(() => true);
-    localController = new LocalDatabaseController(testPath, validate);
-    validateFail = jest.fn(() => false);
-    localControllerFail = new LocalDatabaseController(testPath, validateFail);
+  describe("getAll", () => {
+    it("should return all values", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+
+      expect(await localController.getAll()).toEqual(Object.values(TEST_DATA));
+    });
   });
 
-  it('should instantiate', () => {
-    expect(localController).toBeInstanceOf(LocalDatabaseController);
+  describe("get", () => {
+    it("should return found values", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+
+      expect(await localController.get(1)).toEqual(TEST_DATA[1]);
+    });
+
+    it("should return null if nothing found", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+
+      expect(await localController.get(2)).toBeNull();
+    });
   });
 
-  it('should getAll', async () => {
-    expect(await localController.getAll()).toEqual(Object.values(testData));
+  describe("create", () => {
+    it("should create if validated", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+      const cache = {
+        ...TEST_DATA,
+        2: TEST_DATA_ADD
+      };
+
+      expect(await localController.create(TEST_DATA_ADD)).toEqual(TEST_DATA_ADD);
+      expect(validate).toHaveBeenCalled();
+      expect(fs.promises.writeFile).toHaveBeenCalledWith(TEST_PATH, JSON.stringify(cache));
+    });
+
+    it("should not create if not validated", async () => {
+      const localControllerFail = new LocalDatabaseController(TEST_PATH, validateFail);
+
+      expect(await localControllerFail.create(TEST_DATA_ADD)).toBeNull();
+      expect(validateFail).toHaveBeenCalled();
+      expect(fs.promises.writeFile).not.toHaveBeenCalled();
+    });
+
+    it("should log an error if create writeFile failed", async () => {
+      const localControllerError = new LocalDatabaseController(TEST_PATH_INVALID, validate);
+      localControllerError.create(TEST_DATA_ADD);
+
+      expect(log).toHaveBeenCalled();
+    });
   });
 
-  it('should get', async () => {
-    expect(await localController.get(1)).toEqual(testData[1]);
-    expect(await localController.get('notInData')).toBeNull();
+  describe("update", () => {
+    it("should update if validated", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+      const cache = { 1: TEST_DATA_UPDATE };
+
+      expect(await localController.update(1, TEST_DATA_UPDATE)).toEqual(TEST_DATA_UPDATE);
+      expect(validate).toHaveBeenCalled();
+      expect(fs.promises.writeFile).toHaveBeenCalledWith(TEST_PATH, JSON.stringify(cache));
+    });
+
+    it("should return null if id not found", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
+
+      expect(await localController.update(2, TEST_DATA_UPDATE)).toBeNull();
+      expect(validate).not.toHaveBeenCalled();
+      expect(fs.promises.writeFile).not.toHaveBeenCalled();
+    });
+
+    it("should return null if not validated", async () => {
+      const localControllerFail = new LocalDatabaseController(TEST_PATH, validateFail);
+
+      expect(await localControllerFail.update(1, TEST_DATA_UPDATE)).toBeNull();
+      expect(validateFail).toHaveBeenCalled();
+      expect(fs.promises.writeFile).not.toHaveBeenCalled();
+    });
+
+    it("should log an error if update writeFile failed", async () => {
+      const localControllerError = new LocalDatabaseController(TEST_PATH_INVALID, validate);
+      localControllerError.update(1, TEST_DATA_UPDATE);
+
+      expect(log).toHaveBeenCalled();
+    });
   });
 
-  it('should create if validated', async () => {
-    expect(await localController.create(testDataAdd)).toEqual(testDataAdd);
-    expect(validate).toHaveBeenCalled();
-    const cache = {
-      ...testData,
-      2: testDataAdd
-    };
-    expect(fs.promises.writeFile).toHaveBeenCalledWith(testPath, JSON.stringify(cache));
-  });
+  describe("destroy", () => {
+    it("should destroy", async () => {
+      const localController = new LocalDatabaseController(TEST_PATH, validate);
 
-  it('should not create if not validated', async () => {
-    validate = jest.fn(() => false);
+      expect(await localController.destroy(1)).toBe(true);
+      expect(fs.promises.writeFile).toHaveBeenCalledWith(TEST_PATH, JSON.stringify({}));
+    });
 
-    expect(await localControllerFail.create(testDataAdd)).toBeNull();
-    expect(validateFail).toHaveBeenCalled();
-    expect(fs.promises.writeFile).not.toHaveBeenCalled();
-  });
+    it("should log an error if destroy writeFile failed", async () => {
+      const localControllerError = new LocalDatabaseController(TEST_PATH_INVALID, validate);
+      localControllerError.destroy(1);
 
-  it('should update if validated', async () => {
-    expect(await localController.update(1, testDataUpdate)).toEqual(testDataUpdate);
-    expect(validate).toHaveBeenCalled();
-    const cache = { 1: testDataUpdate };
-    expect(fs.promises.writeFile).toHaveBeenCalledWith(testPath, JSON.stringify(cache));
-  });
-
-  it('should not update if not validated', async () => {
-    expect(await localControllerFail.update(1, testDataUpdate)).toBeNull();
-    expect(validateFail).toHaveBeenCalled();
-    expect(fs.promises.writeFile).not.toHaveBeenCalled();
-  });
-
-  it('should destroy', async () => {
-    expect(await localController.destroy(1)).toBe(true);
-    expect(fs.promises.writeFile).toHaveBeenCalledWith(testPath, JSON.stringify({}));
+      expect(log).toHaveBeenCalled();
+    });
   });
 });

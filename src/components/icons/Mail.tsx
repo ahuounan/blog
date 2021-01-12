@@ -1,5 +1,5 @@
-import { Svg } from '@components/primitives/Svg';
-import { CSSProp } from '@stitches.config';
+import { Svg } from "@components/primitives/Svg";
+import { CSSProp } from "@stitches.config";
 
 interface Props {
   css?: CSSProp;
