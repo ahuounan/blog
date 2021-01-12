@@ -1,6 +1,5 @@
-on: pull_requeset
-
 name: Deploy to Amazon ECS
+on: pull_request
 
 jobs:
   deploy:
