@@ -1,9 +1,5 @@
 name: Deploy
 on:
-  push:
-    branches:
-      - develop
-      - master
   workflow_run:
     workflows: ["Tests"]
     branches: [develop, master]
