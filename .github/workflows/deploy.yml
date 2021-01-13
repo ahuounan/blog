@@ -27,9 +27,6 @@ jobs:
     needs: setEnv
 
     steps:
-      - name: Deploy to ${{ needs.setEnv.outputs.env }}
-        uses: ./.github/actions/deployToAws
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
