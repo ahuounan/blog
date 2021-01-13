@@ -1,14 +1,34 @@
-name: Deploy to Amazon ECS
-on: pull_request
+name: Deploy
+on:
+  push:
+    branches:
+      - develop
+      - master
 
 jobs:
-  deploy:
-    name: Deploy
+  setEnv:
+    name: Set environment
     runs-on: ubuntu-latest
+    outputs:
+      env: ${{ steps.setEnv.outputs.env }}
+    steps:
+      - name: setEnv
+        run: |
+          if [[ ${{ github.ref =~ ^.*develop.*$ }} ]]
+          then
+            echo ::set-output name=env::uat
+          else
+            echo ::set-output name=env::prod
+          fi
+
+  deploy:
+    name: Deploy to ${{ needs.setEnv.outputs.env }}
+    runs-on: ubuntu-latest
+    needs: setEnv
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Deploy to ${{ needs.setEnv.outputs.env }}
+        uses: ./.github/actions/deployToAws
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -36,14 +56,14 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition-uat.json
-          container-name: uat
+          task-definition: task-definition-${{ needs.setEnv.outputs.env }}.json
+          container-name: ${{ needs.setEnv.outputs.env }}
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: uat
+          service: ${{ needs.setEnv.outputs.env }}
           cluster: blog
           wait-for-service-stability: true
