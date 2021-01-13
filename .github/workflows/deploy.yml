@@ -16,10 +16,13 @@ jobs:
         run: |
           if [[ ${{ contains(github.ref, 'develop') }} ]]
           then
-            echo ::set-output name=env::uat
+            echo '::set-output name=env::uat'
           else
-            echo ::set-output name=env::prod
+            echo '::set-output name=env::prod'
           fi
+        id: setEnv
+      - name: Echo
+        run: echo ${{ steps.setEnv.outputs.env }}
 
   deploy:
     name: Deploy to ${{ needs.setEnv.outputs.env }}
