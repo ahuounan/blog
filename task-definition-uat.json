@@ -52,7 +52,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "blog-uat"
+      "name": "uat"
     }
   ],
   "placementConstraints": [],

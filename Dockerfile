@@ -8,6 +8,6 @@ RUN npm ci
 RUN npm run links:add
 RUN npm run build
 
-EXPOSE 80
+EXPOSE 3000
 
 CMD ["npm", "start"]
