@@ -4,6 +4,11 @@ on:
     branches:
       - develop
       - master
+  workflow_run:
+    workflows: ["Tests"]
+    branches: [develop, master]
+    types:
+      - completed
 
 jobs:
   setEnv:
