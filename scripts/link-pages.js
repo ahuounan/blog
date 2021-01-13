@@ -7,12 +7,15 @@ const pagesPath = "src/pages";
 
 function linkDir(dir, parent) {
   for (const page of dir) {
-    console.log(page.name);
     if (testPathRegex.test(page.name)) {
       continue;
     }
     const targetPath = path.resolve(path.join(componentsPagePath, parent, page.name));
     const destPath = path.resolve(path.join(pagesPath, parent, page.name));
+
+    if (fs.existsSync(destPath)) {
+      fs.rmSync(destPath, { recursive: true });
+    }
 
     if (page.isDirectory()) {
       fs.mkdirSync(destPath);
@@ -23,9 +26,6 @@ function linkDir(dir, parent) {
         page.name
       );
     } else {
-      if (fs.existsSync(destPath)) {
-        fs.rmSync(destPath, { recursive: true });
-      }
       fs.symlinkSync(targetPath, destPath, { type: page.type });
     }
   }
