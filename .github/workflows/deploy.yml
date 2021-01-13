@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: setEnv
         run: |
-          if [[ ${{ github.ref =~ ^.*develop.*$ }} ]]
+          if [[ ${{ contains(github.ref, 'develop') }} ]]
           then
             echo ::set-output name=env::uat
           else
