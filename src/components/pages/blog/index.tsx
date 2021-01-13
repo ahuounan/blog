@@ -33,7 +33,7 @@ export default function Blog(props: Props): JSX.Element {
                 }}
                 key={post.id}
                 title={post.title}>
-                {post.content.slice(200) + "..."}
+                {post.content.slice(200) + "......"}
               </PostLayout>
             ))}
           </>
