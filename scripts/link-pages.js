@@ -13,6 +13,10 @@ function linkDir(dir, parent) {
     const targetPath = path.resolve(path.join(componentsPagePath, parent, page.name));
     const destPath = path.resolve(path.join(pagesPath, parent, page.name));
 
+    if (fs.existsSync(destPath)) {
+      fs.rmSync(destPath, { recursive: true });
+    }
+
     if (page.isDirectory()) {
       fs.mkdirSync(destPath);
       linkDir(
@@ -22,9 +26,6 @@ function linkDir(dir, parent) {
         page.name
       );
     } else {
-      if (fs.existsSync(destPath)) {
-        fs.rmSync(destPath, { recursive: true });
-      }
       fs.symlinkSync(targetPath, destPath, { type: page.type });
     }
   }
