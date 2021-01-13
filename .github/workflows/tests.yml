@@ -1,5 +1,6 @@
 name: Tests
-on: push
+on: pull_request
+
 jobs:
   test:
     name: Static and Jest tests
