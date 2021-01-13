@@ -1,0 +1,22 @@
+name: Tests
+on: push
+jobs:
+  test:
+    name: Static and Jest tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Link files
+        run: npm run links:add
+
+      - name: Static tests
+        run: npm run static:test
+
+      - name: Jest tests
+        run: npm test
