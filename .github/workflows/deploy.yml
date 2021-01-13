@@ -1,10 +1,9 @@
 name: Deploy
 on:
-  workflow_run:
-    workflows: ["Tests"]
-    branches: [develop, master]
-    types:
-      - completed
+  push:
+    branches:
+      - develop
+      - master
 
 jobs:
   setEnv:
