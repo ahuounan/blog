@@ -59,7 +59,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition-${{ needs.setEnv.outputs.env }}.json
+          task-definition: aws/task-definition-${{ needs.setEnv.outputs.env }}.json
           container-name: ${{ needs.setEnv.outputs.env }}
           image: ${{ steps.build-image.outputs.image }}
 
@@ -84,7 +84,7 @@ jobs:
         with:
           browser: chrome
           headless: true
-          config-file: cypress.${{ needs.setEnv.outputs.env }}.json
+          config-file: cypress/cypress.${{ needs.setEnv.outputs.env }}.json
 
       - uses: actions/upload-artifact@v1
         if: failure()

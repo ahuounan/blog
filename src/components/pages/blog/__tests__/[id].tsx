@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from "querystring";
 
 import { GetServerSidePropsContext } from "next";
 
-import { renderWithRouter } from "jestUtils/renderWithRouter";
+import { renderWithRouter } from "jest/renderWithRouter";
 import MOCK_POSTS from "localDatabase/mockPosts.json";
 
 import BlogPost, { getServerSideProps, Params } from "../[id]";

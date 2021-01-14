@@ -1,4 +1,4 @@
-import { renderWithRouter } from "jestUtils/renderWithRouter";
+import { renderWithRouter } from "jest/renderWithRouter";
 
 import Contact from "../contact";
 

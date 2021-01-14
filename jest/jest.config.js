@@ -1,5 +1,6 @@
-const { pathsToModuleNameMapper } = require("./jestUtils/pathsToModuleNameMapper");
-const { compilerOptions } = require("./tsconfig.json");
+const { compilerOptions } = require("../tsconfig.json");
+
+const { pathsToModuleNameMapper } = require("./pathsToModuleNameMapper");
 
 module.exports = {
   clearMocks: true,
@@ -18,8 +19,9 @@ module.exports = {
   globals: {
     __TEST__: true
   },
+  rootDir: "../",
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["./jestUtils/setupTests.ts"],
+  setupFilesAfterEnv: ["./jest/setupTests.ts"],
   moduleDirectories: ["node_modules", "src"],
   modulePaths: ["<rootDir>/", "<rootDir>/libs"],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
