@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy and Integration Tests
 on:
   push:
     branches:
@@ -32,6 +32,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -58,7 +59,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition-${{ needs.setEnv.outputs.env }}.json
+          task-definition: aws/task-definition-${{ needs.setEnv.outputs.env }}.json
           container-name: ${{ needs.setEnv.outputs.env }}
           image: ${{ steps.build-image.outputs.image }}
 
@@ -69,3 +70,30 @@ jobs:
           service: ${{ needs.setEnv.outputs.env }}
           cluster: blog
           wait-for-service-stability: true
+
+  test:
+    name: Cypress tests
+    runs-on: ubuntu-latest
+
+    needs: [setEnv, deploy]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          config-file: cypress/cypress.${{ needs.setEnv.outputs.env }}.json
+
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
