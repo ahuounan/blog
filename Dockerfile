@@ -4,7 +4,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN npm install --production
+RUN npm ci
 RUN npm run links:add
 RUN npm run build
 
