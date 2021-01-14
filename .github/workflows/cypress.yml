@@ -20,7 +20,7 @@ jobs:
           node-version: "14"
 
       - name: Install Dependencies
-        run: npm i cypress@${{ npm info cypress version }}
+        run: npm i cypress@$`npm info cypress version`
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
