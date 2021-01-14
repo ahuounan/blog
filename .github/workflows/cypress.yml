@@ -15,13 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-
-      - name: Install Dependencies
-        run: npm i cypress@`npm info cypress version`
-
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
