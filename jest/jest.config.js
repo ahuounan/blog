@@ -1,5 +1,6 @@
-const { pathsToModuleNameMapper } = require("./jestUtils/pathsToModuleNameMapper");
-const { compilerOptions } = require("./tsconfig.json");
+const { compilerOptions } = require("../tsconfig.json");
+
+const { pathsToModuleNameMapper } = require("./pathsToModuleNameMapper");
 
 module.exports = {
   clearMocks: true,

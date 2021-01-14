@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from "querystring";
 import { fireEvent } from "@testing-library/react";
 import { GetServerSidePropsContext } from "next";
 
-import { renderWithRouter, router } from "jestUtils/renderWithRouter";
+import { renderWithRouter, router } from "jest/renderWithRouter";
 import MOCK_POSTS from "localDatabase/mockPosts.json";
 
 import Blog, { getServerSideProps } from "..";

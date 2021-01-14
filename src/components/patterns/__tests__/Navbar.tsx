@@ -1,6 +1,6 @@
 import { fireEvent } from "@testing-library/react";
 
-import { router, renderWithRouter } from "jestUtils/renderWithRouter";
+import { router, renderWithRouter } from "jest/renderWithRouter";
 
 import { routes, Navbar } from "../Navbar";
 
