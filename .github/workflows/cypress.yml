@@ -5,8 +5,9 @@ on:
       - feat/cypress
   workflow_run:
     workflows: ["Deploy"]
-  types:
-    - completed
+    types:
+      - completed
+
 jobs:
   test:
     name: Cypress tests
