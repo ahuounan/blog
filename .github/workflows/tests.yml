@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: "14"
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --production
 
       - name: Link files
         run: npm run links:add
