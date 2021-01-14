@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: setEnv
         run: |
-          if [[ ${{ contains(github.ref, 'develop') }} ]]; then
+          if ${{ contains(github.ref, 'develop') }}; then
             echo '::set-output name=env::uat'
           fi
-          if [[ ${{ contains(github.ref, 'master') }} ]]; then
+          if ${{ contains(github.ref, 'master') }}; then
             echo '::set-output name=env::prod'
           fi
         id: setEnv
