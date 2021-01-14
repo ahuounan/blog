@@ -22,5 +22,6 @@ module.exports = {
   setupFilesAfterEnv: ["./jestUtils/setupTests.ts"],
   moduleDirectories: ["node_modules", "src"],
   modulePaths: ["<rootDir>/", "<rootDir>/libs"],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths)
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+  testPathIgnorePatterns: ["/node_modules/", "cypress"]
 };
