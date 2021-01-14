@@ -20,4 +20,4 @@ jobs:
         run: npm run static:test
 
       - name: Jest tests
-        run: npm test:ci
+        run: npm run test:ci
