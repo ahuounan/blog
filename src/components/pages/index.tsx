@@ -17,9 +17,9 @@ export default function Home(): JSX.Element {
       background={<Background />}
       body={
         <SectionLayout title="Home">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13].map(n => (
+          {[0].map(n => (
             <PostLayout key={n} title={`Post ${n}`}>
-              lorem imuspt
+              fIrst post!
             </PostLayout>
           ))}
         </SectionLayout>
