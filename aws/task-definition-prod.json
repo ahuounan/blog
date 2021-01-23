@@ -59,7 +59,7 @@
   ],
   "placementConstraints": [],
   "memory": "1024",
-  "taskRoleArn": "arn:aws:iam::198583464579:role/ecsTaskExecutionRoleProd",
+  "taskRoleArn": "arn:aws:iam::198583464579:role/ecsTaskExecutionRole",
   "compatibilities": ["EC2", "FARGATE"],
   "taskDefinitionArn": "arn:aws:ecs:eu-west-2:198583464579:task-definition/prod:22",
   "family": "prod",
